@@ -3,7 +3,6 @@ const core = require("@actions/core");
 require('dotenv/config')
 
 import isValidCommitMessage from "./isValidCommitMesage";
-import extractCommits from "./extractCommits";
 
 async function run() {
     core.info(`ℹ️ Checking if your commit message is following the Conventional Commits specification...`
@@ -26,9 +25,9 @@ async function run() {
     core.endGroup();
 
     if (hasErrors) {
-        core.setFailed(
-            `🚫 According to the conventional-commits specification, your commit message is not valid.`
-        );
+        core.info("🚫 According to the conventional-commits specification, your commit message is not valid.")
+        core.info("Scope must be one of [build, chore, ci, docs, feat, fix, perf, refactor, revert, style, test] [scope-enum]")
+        core.setFailed("Please follow the guildlines at https://conventionalcommits.org/en/v1.0.0/");
     } else {
         core.info("🎉 Your commit message is following the Conventional Commits specification.");
     }
