@@ -13,7 +13,8 @@ const extractCommits = async (context): Promise<Commit[]> => {
     }
 
     // For PRs, we need to get a list of commits via the GH API:
-    const prCommitsUrl = get(context, "payload.pull_request.commits_url");
+    //const prCommitsUrl = get(context, "payload.pull_request.commits_url");
+    const prCommitsUrl = get(context, "github.event.commits[0].message");
     if (prCommitsUrl) {
         try {
             const { body } = await got.get(prCommitsUrl, {
