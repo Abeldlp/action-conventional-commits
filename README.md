@@ -23,5 +23,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: webiny/action-conventional-commits@v1.0.3
+      - uses: Abeldlp/action-conventional-commits@v1.0.3
 ```
